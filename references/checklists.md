@@ -1,5 +1,27 @@
 # Agent Harness Checklists
 
+## MVP agent blueprint checklist
+
+- [ ] Domain, primary user, and job-to-be-done are stated.
+- [ ] MVP scope, assumptions, non-goals, and deferred capabilities are explicit.
+- [ ] Autonomy level is the lowest level that still creates value.
+- [ ] Core model-tool-observation loop is specified.
+- [ ] Step, tool-call, time, token, and cost budgets are specified.
+- [ ] Minimal typed tool registry is defined.
+- [ ] Permission matrix covers read, draft, write, external, financial, destructive, and privileged actions.
+- [ ] Risky actions use draft/commit separation.
+- [ ] Planning mode blocks mutation until approval.
+- [ ] Goal-like loop has objective, checkpoints, budget, validation, and stop rules.
+- [ ] Context builder separates stable/cacheable content from volatile state.
+- [ ] Memory, plans, approvals, todos, and artifacts are stored outside the prompt.
+- [ ] Auto-compaction summary format and rehydration rules are defined.
+- [ ] Skills are progressively disclosed and permission-bounded.
+- [ ] MCP/external connectors are namespaced, scoped, and logged.
+- [ ] Prompt caching and cost telemetry are included.
+- [ ] Traces and evals are defined before launch.
+- [ ] First rollout is limited, monitored, or shadow-mode.
+
+
 ## Design checklist
 
 - [ ] Domain and user persona defined.

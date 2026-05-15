@@ -54,3 +54,8 @@ agents-best-practices/
     checklists.md
     coverage-audit.md
 ```
+
+
+## MVP agent blueprint generation
+
+Covered in `SKILL.md`, `references/mvp-agent-blueprint.md`, `references/architecture.md`, and `references/checklists.md`. The skill now explicitly instructs assistants to produce a domain-specific MVP harness blueprint when the user asks to make or build an agent. The blueprint includes agentic loop, tool registry, permissions, context and memory, auto-compaction, planning mode, goal-like loop criteria, skills, MCP/external connectors, prompt caching, cost-aware context, observability, evals, and launch path.

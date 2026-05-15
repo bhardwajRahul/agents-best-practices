@@ -269,3 +269,15 @@ regression eval additions
 ```
 
 Continuous cleanup is cheaper than waiting until drift becomes systemic.
+
+## MVP harness default
+
+When building a new domain agent, start with an MVP harness rather than a full autonomy platform. The MVP should include one primary job-to-be-done, a minimal typed tool registry, approval-gated risky actions, explicit budgets, a deterministic context builder, planning mode, auto-compaction, tracing, and a small eval set. Add goal-like loops, more connectors, skills, or subagents only after the single-agent MVP has measured gaps.
+
+The recommended MVP sequence is:
+
+```text
+manual loop -> tools -> permissions -> structured observations -> budgets -> tracing -> planning -> context/memory -> compaction -> skills/connectors -> goal loop -> subagents
+```
+
+This sequence applies across domains. A coding agent may use file and shell tools; a support agent may use ticket and email tools; a finance agent may use ledger and approval tools. The harness pattern is the same.

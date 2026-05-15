@@ -1,11 +1,11 @@
 # agents-best-practices
 
-<img src="icon.jpeg" alt="agents-best-practices icon" width="627" />
+<img src="icon.jpeg" alt="agents-best-practices icon" width="300" />
 
 `agents-best-practices` is a general-purpose Agent Skill for Codex, Claude
 Code, and other tools that support the `SKILL.md` skill format. It helps with
-designing, auditing, refactoring, and explaining agentic harnesses across
-domains.
+designing, generating MVP blueprints for, auditing, refactoring, and
+explaining agentic harnesses across domains.
 
 It is not limited to coding agents. The same harness patterns apply to
 research, support, operations, sales, finance, data analysis, procurement,
@@ -23,8 +23,8 @@ files:
 - `SKILL.md` defines when to use the skill, the core stance, the default answer
   structure, the reference map, and non-negotiable principles.
 - `references/` contains deeper guides for architecture, loops, tools,
-  permissions, context, memory, planning, goals, skills, connectors, security,
-  evals, observability, provider APIs, and checklists.
+  permissions, context, memory, planning, goals, MVP agent blueprints, skills,
+  connectors, security, evals, observability, provider APIs, and checklists.
 
 Use `SKILL.md` first, then load only the reference files needed for the user's
 specific harness design problem.
@@ -77,73 +77,82 @@ it can discover the new directory.
    How to design the runtime around a model: context, tools, permissions,
    memory, observability, and stopping conditions.
 
-2. **Agentic Loop**
+2. **MVP Agent Blueprint Builder**
+
+   How to turn a domain request into the smallest useful production-safe agent
+   harness blueprint, including autonomy, tools, permissions, context, evals,
+   and launch criteria.
+
+3. **Agentic Loop**
 
    The core loop: model call, tool call, validation, permission check,
    execution, observation, then the next step or final answer.
 
-3. **System Prompts and Instructions**
+4. **System Prompts and Instructions**
 
    How to structure instruction layers: global, workspace, domain-specific,
    task-level, and runtime reminders.
 
-4. **Tools and Permissions**
+5. **Tools and Permissions**
 
    How to design tools that are narrow, typed, safe, auditable, and separated
    by risk class.
 
-5. **Planning Mode**
+6. **Planning Mode**
 
    How to separate planning from execution with read-only exploration, a plan
    artifact, approval, and only then mutations.
 
-6. **Goal-Like Loop**
+7. **Goal-Like Loop**
 
    How to define long-running goals with budgets, checkpoints, validation
    criteria, and a stop condition.
 
-7. **Context, Memory, and Auto-Compaction**
+8. **Context, Memory, and Auto-Compaction**
 
    How to manage context, retrieval, working state, durable memory, and
    compaction without losing critical data.
 
-8. **Prompt Caching and Cost-Aware Context**
+9. **Prompt Caching and Cost-Aware Context**
 
    How to build stable prompt prefixes, deterministic tool ordering, and a
    cache-friendly agent runtime.
 
-9. **Skills and Progressive Disclosure**
+10. **Skills and Progressive Disclosure**
 
    How to attach reusable workflows: short skill indexes first, full
    instructions only when needed.
 
-10. **MCP and External Connectors**
+11. **MCP and External Connectors**
 
     How to connect external systems through governed connectors with
     namespacing, auth, permissions, audit logs, and least privilege.
 
-11. **Security, Approvals, and Sandboxing**
+12. **Security, Approvals, and Sandboxing**
 
     Prompt injection handling, secrets, approval flows, draft-versus-commit,
     and sandboxing for open-world tools.
 
-12. **Observability and Evals**
+13. **Observability and Evals**
 
     How to log agent runs, tool calls, approvals, compactions, failures, and
     test harnesses against real failure modes.
 
-13. **Provider API Patterns**
+14. **Provider API Patterns**
 
     Practical implementation patterns for OpenAI, Anthropic, and
     OpenAI-compatible APIs without hard-coding the harness to one provider.
 
-14. **Checklists and Coverage Audit**
+15. **Checklists and Coverage Audit**
 
     Ready-to-use checklists for launch readiness, tool additions, skills and
     connector integrations, and production review.
 
 ## Reference Map
 
+- [`references/mvp-agent-blueprint.md`](references/mvp-agent-blueprint.md):
+  MVP harness blueprint structure, domain intake, autonomy levels, tool
+  registry pattern, permission matrix, evals, and launch checklist.
 - [`references/architecture.md`](references/architecture.md): harness model,
   component boundaries, authority hierarchy, event model, and maturity levels.
 - [`references/agentic-loop.md`](references/agentic-loop.md): canonical loop,
@@ -187,9 +196,10 @@ it can discover the new directory.
 
 Use this skill when the user needs help with an agent, agentic workflow, AI
 worker, autonomous assistant, or harness. It is especially useful when the task
-involves tool design, permission boundaries, approval-gated execution, planning
-mode, long-running goals, memory, compaction, skills, external connectors,
-security, evals, observability, cost, or provider API choices.
+involves creating an MVP agent blueprint, tool design, permission boundaries,
+approval-gated execution, planning mode, long-running goals, memory,
+compaction, skills, external connectors, security, evals, observability, cost,
+or provider API choices.
 
 Do not use it for ordinary one-shot writing, translation, or Q&A unless the
 user is asking how to design an agent that will perform those tasks.

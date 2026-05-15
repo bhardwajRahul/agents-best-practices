@@ -1,8 +1,8 @@
 ---
 name: agents-best-practices
-description: "Use this skill when designing, auditing, refactoring, or explaining an agentic harness for any domain. Covers provider-neutral agent architecture for OpenAI, Anthropic, and OpenAI-compatible APIs: agent loops, tool design, permissions, system prompts, planning, goals, context compaction, memory, skills, MCP/external connectors, observability, evals, prompt caching, agent-legible environments, feedback loops, and safety."
+description: "Use this skill when designing, generating an MVP blueprint for, auditing, refactoring, or explaining an agentic harness for any domain. Covers provider-neutral agent architecture for OpenAI, Anthropic, and OpenAI-compatible APIs: agent loops, tool design, permissions, system prompts, planning, goals, context compaction, memory, skills, MCP/external connectors, observability, evals, prompt caching, agent-legible environments, feedback loops, and safety."
 metadata:
-  version: "1.1.0"
+  version: "1.2.0"
   scope: "provider-neutral-agent-harness"
   file_policy: "markdown-only"
 ---
@@ -35,6 +35,7 @@ user/task
 Use this skill for prompts involving any of these intents:
 
 - build an agent, agentic workflow, AI worker, autonomous assistant, or harness;
+- create a domain-specific MVP agent design, starter harness, implementation blueprint, or first production-safe version;
 - choose between OpenAI, Anthropic, OpenAI-compatible APIs, direct tool loops, hosted tools, or SDKs;
 - design tools, permissions, guardrails, approval flows, or sandboxing;
 - create planning mode, goal mode, todo tracking, or long-running task behavior;
@@ -57,10 +58,24 @@ First, identify the user's design problem:
 5. **Tool surface**: internal APIs, hosted tools, MCP/external connectors, browser, sandbox, filesystem, database, communication, or computation.
 6. **Validation**: what proves the task is complete.
 
-Then load the most relevant reference files, not all files by default.
+Then load the most relevant reference files, not all files by default. If the user asks to make or build an agent for a domain, default to MVP Builder Mode.
+
+## MVP Builder Mode
+
+When the user asks to make, build, design, scaffold, or specify an agent for a domain, produce a concrete domain-specific MVP harness blueprint, not only advice. Use [mvp-agent-blueprint.md](references/mvp-agent-blueprint.md) as the primary reference and load other references as needed.
+
+Default behavior:
+
+1. Infer a reasonable first version from the user's domain and stated constraints.
+2. State assumptions briefly instead of blocking on missing details.
+3. Design the smallest safe harness that can accomplish useful work.
+4. Include the core agentic loop, tool registry, permission matrix, context/memory/compaction, planning mode, goal-like loop criteria, skills/connectors, prompt-cache/cost strategy, observability, evals, and launch path.
+5. Mark high-risk actions as draft-only or approval-gated by default.
+6. Avoid multi-agent orchestration until the single-agent MVP has measurable failure cases that require decomposition.
 
 ## Reference map
 
+- Read [mvp-agent-blueprint.md](references/mvp-agent-blueprint.md) first when the user asks to create a new domain-specific agent or MVP harness.
 - Read [architecture.md](references/architecture.md) for the full harness model and component boundaries.
 - Read [agent-legibility-feedback-loops.md](references/agent-legibility-feedback-loops.md) for source-of-truth knowledge bases, agent-legible environments, validation loops, mechanical invariants, and recurring cleanup.
 - Read [agentic-loop.md](references/agentic-loop.md) for the provider-neutral loop, step budgets, retries, and loop variants.
@@ -80,6 +95,7 @@ Then load the most relevant reference files, not all files by default.
 
 When the user asks for guidance, produce a concrete architecture, not generic principles:
 
+0. **MVP boundary**: smallest useful version, assumptions, non-goals, and launch criteria.
 1. **Harness boundary**: what the model does versus what application code does.
 2. **Loop**: how model calls, tool calls, tool results, stopping, and retries work.
 3. **Instructions**: system/developer/user instruction hierarchy and scoped memory.
@@ -109,13 +125,16 @@ When the user asks for guidance, produce a concrete architecture, not generic pr
 
 ## Common output template
 
-Use this template when the user wants a harness design:
+Use this template when the user wants a harness design. If the user asks to make/build an agent, use this as an MVP blueprint, not a purely conceptual answer:
 
 ```markdown
-# Agent Harness Design: [domain/use case]
+# MVP Agent Harness Blueprint: [domain/use case]
 
 ## Objective
 [What the agent must accomplish and for whom.]
+
+## MVP scope and assumptions
+[Smallest useful version, explicit assumptions, non-goals, and what is intentionally deferred.]
 
 ## Autonomy and risk level
 [Answer-only, draft-only, approval-gated, or autonomous within policy.]
@@ -145,7 +164,7 @@ Use this template when the user wants a harness design:
 [Trace events, eval cases, launch criteria, failure probes.]
 
 ## Minimal implementation path
-[Smallest safe version first, then measured expansion.]
+[Smallest safe version first, implementation skeleton, validation path, then measured expansion.]
 ```
 
 ## Gotchas
