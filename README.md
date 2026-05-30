@@ -74,7 +74,7 @@ git clone https://github.com/DenisSergeevitch/agents-best-practices.git \
 
 ## Use cases
 
-Once installed, the skill activates when a conversation touches agent architecture, harness design, tool permissions, planning mode, context and memory, skills, connectors, observability, evals, prompt caching, or production readiness. Three common ways to use it:
+Once installed, the skill activates when a conversation touches agent architecture, harness design, tool permissions, planning mode, workflow orchestration, context and memory, skills, connectors, observability, evals, prompt caching, or production readiness. Three common ways to use it:
 
 ### Case 1 - Generate an MVP agent blueprint
 
@@ -154,6 +154,7 @@ Use [`references/tools-and-permissions.md`](references/tools-and-permissions.md)
 ### Other things the skill is good for
 
 - **"How do I add planning mode without making the agent passive?"** -> use [`references/planning-and-goals.md`](references/planning-and-goals.md).
+- **"When should a large task become a decomposed workflow?"** -> use [`references/workflow-orchestration.md`](references/workflow-orchestration.md).
 - **"How should auto-compaction preserve active work?"** -> use [`references/context-memory-compaction.md`](references/context-memory-compaction.md).
 - **"How do I make prompt caching work in a long-running agent?"** -> use [`references/prompt-caching-and-cost.md`](references/prompt-caching-and-cost.md).
 - **"How do I support OpenAI, Anthropic, and OpenAI-compatible APIs?"** -> use [`references/provider-api-patterns.md`](references/provider-api-patterns.md).
@@ -171,6 +172,7 @@ A reference for people building agentic systems where the model is only one part
 - narrow typed tools and structured tool results,
 - runtime permission checks outside the model,
 - planning mode and approval-gated execution,
+- workflow orchestration for large decomposable tasks,
 - goal-like loops with budgets, checkpoints, validation, and stop rules,
 - context, memory, retrieval, and auto-compaction,
 - skills, MCP, and external connector governance,
@@ -187,7 +189,7 @@ This is the control plane around an agent: **instructions -> context builder -> 
 - Not a prompt-only safety strategy.
 - Not a reason to expose broad tools like `execute_anything`, `send_message`, or `write_database`.
 
-Use the single-agent MVP first. Add subagents, goal loops, connectors, and broader autonomy only after measured failures justify them.
+Use the single-agent MVP first. Add goal loops, connectors, and broader autonomy only after measured failures justify them.
 
 ## Layout
 
@@ -202,6 +204,7 @@ agents-best-practices/
     ├── agentic-loop.md                       # loop invariants, retries, budgets, stopping
     ├── tools-and-permissions.md              # typed tools, risk classes, approvals
     ├── planning-and-goals.md                 # planning mode and long-running goals
+    ├── workflow-orchestration.md             # decomposed workflows, packets, verification
     ├── context-memory-compaction.md          # context, memory, retrieval, compaction
     ├── prompt-caching-and-cost.md            # stable prefixes and cost-aware context
     ├── skills-and-connectors.md              # Agent Skills, MCP, connectors, tool search
